@@ -1,12 +1,26 @@
-from PIL import Image
 import cv2
+import numpy as np
+
 #Goal: Take an image and convert it to a usable matrix
 
-image_path="line_test.jpg"
-try:
-    img = Image.open(image_path)
-    print(f"Image loaded successfully: {img.format}, {img.mode}, {img.size}")
-except Exception as e:
-    print(f"An error occurred: {e}")
+def get_image(image_path):
 
-image_matrix=cv2.imread(image_path)
+#load in with grayscale
+    img=cv2.imread(image_path, 0)
+
+#finding points(estimated points)
+
+#here is where ml model 1 will be helpful
+    points=np.where(img < 10, 1, 0)
+
+    height,width=points.shape
+
+    ys,xs=(points==1).nonzero()
+    
+#get the x and y values of all points
+    x=xs.astype(float)
+    y=(height-1-ys).astype(float)
+
+#ensure uniqueness
+
+    return x,y
