@@ -2,7 +2,7 @@ from getImage import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-image_path=image_path=r"C:\Users\Bose\Desktop\USC\projects\graphing_Project\graphing_Project\image_processing\tests\line_test.jpg"
+image_path=r"C:\Users\Bose\Desktop\USC\projects\graphing_Project\graphing_Project\image_processing\tests\line_test.jpg"
 x_matrix,y_matrix=get_image(image_path)
 
 
@@ -24,7 +24,7 @@ def calculate_r2(y_matrix, y_expected):
     sum_squared_error=0
     sum_squared_total=0
     coefficient=(len(y_matrix)-1)/(len(y_matrix)-2)
-    for i in range(0, len(y_matrix)-1):
+    for i in range(0, 50):
         sum_squared_error+=(y_expected[i]-y_matrix[i])**2
         sum_squared_total+=y_matrix[i]**2
     return 1-coefficient*sum_squared_error/sum_squared_total
